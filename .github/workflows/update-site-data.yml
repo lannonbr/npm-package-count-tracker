@@ -16,7 +16,7 @@ jobs:
         with:
           aws-region: ${{ secrets.AWS_REGION }}
           role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
-          role-session-name: ESMCheckerSiteSession
+          role-session-name: NpmPackageCountSiteSession
           role-duration-seconds: 900
       - run: npm install
       - run: node grabStats.js > src/_data/stats.json
