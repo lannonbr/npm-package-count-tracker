@@ -1,0 +1,32 @@
+on:
+  schedule:
+    - cron: "10 0 * * *" # Every day at 12:10AM UTC
+  workflow_dispatch:
+permissions:
+  id-token: write
+  contents: write
+name: Refresh Data
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    working-directory: site
+    steps:
+      - uses: actions/checkout@v3
+      - uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-region: ${{ secrets.AWS_REGION }}
+          role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
+          role-session-name: ESMCheckerSiteSession
+          role-duration-seconds: 900
+      - run: npm install
+      - run: node grabStats.js > src/_data/stats.json
+        env:
+          AWS_REGION: ${{ secrets.AWS_REGION }}
+          DYNAMO_TABLE_NAME: ${{ secrets.DYNAMO_TABLE_NAME }}
+      - run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "<>"
+      - run: |
+          git add src/_data/
+          git commit -m "Updated data"
+          git push origin main

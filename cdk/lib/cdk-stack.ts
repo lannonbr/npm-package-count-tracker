@@ -5,10 +5,30 @@ import { Code, Function, Runtime } from "aws-cdk-lib/aws-lambda";
 import * as path from "path";
 import { Rule, Schedule } from "aws-cdk-lib/aws-events";
 import * as targets from "aws-cdk-lib/aws-events-targets";
+import {
+  GithubActionsRole,
+  GithubActionsIdentityProvider,
+} from "aws-cdk-github-oidc";
 
 export class CdkStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
+
+    const provider = GithubActionsIdentityProvider.fromAccount(
+      this,
+      "GitHubProvider"
+    );
+
+    const siteRole = new GithubActionsRole(
+      this,
+      "NPMPackageCountTrackerSiteRole",
+      {
+        provider,
+        owner: "lannonbr",
+        repo: "npm-package-count-tracker",
+        filter: "ref:refs/heads/main",
+      }
+    );
 
     const table = new Table(this, "dataTable", {
       partitionKey: {
@@ -36,6 +56,7 @@ export class CdkStack extends cdk.Stack {
     });
 
     table.grantReadWriteData(fn);
+    table.grantReadData(siteRole);
 
     new Rule(this, "FnSchedule", {
       schedule: Schedule.cron({ hour: "0", minute: "0" }),

@@ -1,0 +1,74 @@
+{
+  "monthStats": [
+    {
+      "count": 2057885,
+      "year_month": "2022-08",
+      "timestamp": "1661126456"
+    },
+    {
+      "count": 2058624,
+      "year_month": "2022-08",
+      "timestamp": "1661212856"
+    },
+    {
+      "count": 2059773,
+      "year_month": "2022-08",
+      "timestamp": "1661299257"
+    },
+    {
+      "count": 2061129,
+      "year_month": "2022-08",
+      "timestamp": "1661385655"
+    },
+    {
+      "count": 2062229,
+      "year_month": "2022-08",
+      "timestamp": "1661472056"
+    },
+    {
+      "count": 2063348,
+      "year_month": "2022-08",
+      "timestamp": "1661558456"
+    },
+    {
+      "count": 2064560,
+      "year_month": "2022-08",
+      "timestamp": "1661644856"
+    },
+    {
+      "count": 2065211,
+      "year_month": "2022-08",
+      "timestamp": "1661731255"
+    },
+    {
+      "count": 2065948,
+      "year_month": "2022-08",
+      "timestamp": "1661817657"
+    },
+    {
+      "count": 2067068,
+      "year_month": "2022-08",
+      "timestamp": "1661904056"
+    },
+    {
+      "count": 2068186,
+      "year_month": "2022-09",
+      "timestamp": "1661990456"
+    },
+    {
+      "count": 2069367,
+      "year_month": "2022-09",
+      "timestamp": "1662076856"
+    },
+    {
+      "count": 2070568,
+      "year_month": "2022-09",
+      "timestamp": "1662163257"
+    },
+    {
+      "count": 2071963,
+      "year_month": "2022-09",
+      "timestamp": "1662249656"
+    }
+  ]
+}
