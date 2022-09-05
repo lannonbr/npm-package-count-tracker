@@ -9,7 +9,9 @@ name: Refresh Data
 jobs:
   run:
     runs-on: ubuntu-latest
-    working-directory: site
+    defaults:
+      run:
+        working-directory: site
     steps:
       - uses: actions/checkout@v3
       - uses: aws-actions/configure-aws-credentials@v1
