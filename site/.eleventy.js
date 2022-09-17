@@ -5,6 +5,7 @@ require("@aws-sdk/lib-dynamodb");
 module.exports = (eleventyConfig) => {
   eleventyConfig.addPassthroughCopy("src/css");
   eleventyConfig.addPassthroughCopy("src/scripts");
+  eleventyConfig.addPassthroughCopy({ "src/_data/diff.json": "diff.json" });
   eleventyConfig.addShortcode("statsGraph", (data) => {
     return `
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
