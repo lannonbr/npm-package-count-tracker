@@ -21,6 +21,7 @@ jobs:
           role-session-name: NpmPackageCountSiteSession
           role-duration-seconds: 900
       - run: npm install
+      - run: mkdir -p src/_data/
       - run: node grabStats.js > src/_data/stats.json
         env:
           AWS_REGION: ${{ secrets.AWS_REGION }}
