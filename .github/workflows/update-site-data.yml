@@ -26,10 +26,14 @@ jobs:
           AWS_REGION: ${{ secrets.AWS_REGION }}
           DYNAMO_TABLE_NAME: ${{ secrets.DYNAMO_TABLE_NAME }}
       - run: node diffStats.js > src/_data/diff.json
-      - run: |
-          git config user.name "GitHub Actions Bot"
-          git config user.email "<>"
-      - run: |
-          git add src/_data/
-          git commit -m "Updated data"
-          git push origin main
+      - name: Deploy Site
+        env:
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+        run: |
+          npm run build
+
+          wget https://github.com/lannonbr/netlify_deploy/releases/download/netlify_deploy-v0.3.0/netlify-deploy-linux-0.3.0.tar.gz
+          tar -xvf netlify-deploy-linux-0.3.0.tar.gz
+
+          ./release/netlify_deploy --path _site --prod
