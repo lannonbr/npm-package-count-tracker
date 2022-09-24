@@ -1,1 +1,3 @@
 **/node_modules
+site/src/_data/stats.json
+site/src/_data/diff.json
