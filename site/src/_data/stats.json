@@ -1,11 +1,6 @@
 {
   "monthStats": [
     {
-      "count": 2063348,
-      "year_month": "2022-08",
-      "timestamp": "1661558456"
-    },
-    {
       "count": 2064560,
       "year_month": "2022-08",
       "timestamp": "1661644856"
@@ -139,6 +134,11 @@
       "count": 2090824,
       "year_month": "2022-09",
       "timestamp": "1663891256"
+    },
+    {
+      "count": 2091989,
+      "year_month": "2022-09",
+      "timestamp": "1663977656"
     }
   ]
 }
