@@ -1,6 +1,6 @@
 on:
   schedule:
-    - cron: "10 0 * * *" # Every day at 12:10AM UTC
+    - cron: "0 1 * * *" # Every day at 1:10AM UTC
   workflow_dispatch:
 permissions:
   id-token: write
